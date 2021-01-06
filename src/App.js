@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { ApolloProvider } from "@apollo/client";
+import { Router, Route, Switch } from "react-router";
+import createBrowserHistory from "history/createBrowserHistory";
+
+import MutationsPage from "./Pages/MutationsPage";
+import QueryPage from "./Pages/QueryPage";
+
+import client from "./graphql";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <Router history={createBrowserHistory()}>
+        <Switch>
+          <Route path="/mutations" component={MutationsPage} exact />
+          <Route path="/" component={QueryPage} exact />
+        </Switch>
+      </Router>
+    </ApolloProvider>
   );
 }
 
