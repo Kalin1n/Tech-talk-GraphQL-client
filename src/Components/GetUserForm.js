@@ -7,7 +7,11 @@ const GetUserForm = ({ selectedUser }) => {
   const [getUser, { loading, error, data }] = useLazyQuery(GET_USER);
 
   useEffect(() => {
-    getUser({ variables: { name: selectedUser } });
+    if (selectedUser) {
+      getUser({ variables: { name: selectedUser } });
+    } else {
+      console.log("NO USER SELECTED");
+    }
   }, [selectedUser]);
 
   useEffect(() => {
