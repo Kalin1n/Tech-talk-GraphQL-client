@@ -23,6 +23,11 @@
   overflow: hidden;
 }
 
+.selected {
+  background-color: black;
+  color: #fff;
+}
+
 .userCard:hover {
   background-color: black;
   color: white;
@@ -43,6 +48,7 @@
 }
 
 .postCard {
+  overflow: hidden;
   max-width: 200px;
   margin-top: 0px;
   border-top: 1px solid lightgrey;

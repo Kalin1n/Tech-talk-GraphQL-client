@@ -3,21 +3,22 @@ import { useQuery } from "@apollo/client";
 
 import { GET_USERS } from "../graphql/actions/getUsers";
 
-const UsersList = ({ setUser }) => {
+const UsersList = ({ setUser, selectedUser }) => {
   const { loading, error, data } = useQuery(GET_USERS, {
     variables: { limit: 2 },
   });
-  useEffect(() => {
-    console.log("Error : ", error);
-  }, [error]);
 
   if (loading) return <p>Loading...</p>;
 
   return (
     <div className="usersWrapper">
       {data.getUsers.map(({ name, id }) => {
+        console.log(selectedUser === name);
         return (
-          <div onClick={() => setUser(name)} className="userCard">
+          <div
+            onClick={() => setUser(name)}
+            className={selectedUser === name ? "userCard selected" : "userCard"}
+          >
             <p>{name}</p>
             <p>{id}</p>
           </div>
