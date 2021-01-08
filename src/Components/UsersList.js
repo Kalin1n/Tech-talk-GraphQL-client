@@ -13,7 +13,6 @@ const UsersList = ({ setUser, selectedUser }) => {
   return (
     <div className="usersWrapper">
       {data.getUsers.map(({ name, id }) => {
-        console.log(selectedUser === name);
         return (
           <div
             onClick={() => setUser(name)}
