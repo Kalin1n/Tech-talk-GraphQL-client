@@ -27,15 +27,19 @@ const GetUserForm = ({ selectedUser, selectPost }) => {
   return (
     <div>
       {data ? (
-        data.getUser.posts.map(({ title, id }) => (
-          <div
-            className="postCard"
-            key={id}
-            onClick={() => handleSelect(title, id)}
-          >
-            <p>{title}</p>
-          </div>
-        ))
+        data.getUser.posts.length ? (
+          data.getUser.posts.map(({ title, id }) => (
+            <div
+              className="postCard"
+              key={id}
+              onClick={() => handleSelect(title, id)}
+            >
+              <p>{title}</p>
+            </div>
+          ))
+        ) : (
+          <p>This user dont have posts</p>
+        )
       ) : (
         <h1>Please select user to see posts</h1>
       )}
