@@ -12,11 +12,16 @@ const LoginForm = () => {
     const response = await loginUser({
       variables: { name: name, password: password },
     });
-    console.log(response);
+    if (response.data.login) {
+      console.log("Token : ", response.data.login);
+      localStorage.setItem("@gql-demo-token", response.data.login);
+    } else {
+      console.log("UNATHORIZED");
+    }
   };
 
   return (
-    <div>
+    <div className="form">
       <input
         value={name}
         onChange={(event) => setName(event.target.value)}

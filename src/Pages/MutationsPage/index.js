@@ -1,8 +1,8 @@
-import { defaultTypeResolver } from "graphql";
 import React from "react";
 
 import RegisterForm from "../../Components/Form";
 import LoginForm from "../../Components/Login";
+import CreatePostFrom from "../../Components/CreatePostForm";
 
 const MutationsPage = () => {
   return (
@@ -14,6 +14,10 @@ const MutationsPage = () => {
       <div>
         <h2>Login</h2>
         <LoginForm />
+      </div>
+      <div>
+        <h2>Create post</h2>
+        <CreatePostFrom />
       </div>
     </div>
   );

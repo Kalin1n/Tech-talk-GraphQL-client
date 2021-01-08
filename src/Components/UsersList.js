@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useQuery } from "@apollo/client";
 
 import { GET_USERS } from "../graphql/actions/getUsers";
@@ -9,7 +9,7 @@ const UsersList = ({ setUser }) => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="usersWrapper">
       {data.getUsers.map(({ name, id }) => {
         return (
           <div onClick={() => setUser(name)} className="userCard">

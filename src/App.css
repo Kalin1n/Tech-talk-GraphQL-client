@@ -6,8 +6,13 @@
 
 .wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
+}
+
+.usersWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(100px, auto));
 }
 
 .userCard {
@@ -20,4 +25,12 @@
 .userCard:hover {
   background-color: lightgrey;
   color: white;
+}
+
+.form {
+  height: 100px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

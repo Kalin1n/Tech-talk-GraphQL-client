@@ -7,7 +7,9 @@ const GetUserForm = ({ selectedUser }) => {
   const [getUser, { loading, error, data }] = useLazyQuery(GET_USER);
 
   useEffect(() => {
-    if (selectedUser) {
+    if (selectedUser === null) {
+      console.log("NO USER SELECTED");
+    } else if (selectedUser) {
       getUser({ variables: { name: selectedUser } });
     } else {
       console.log("NO USER SELECTED");
@@ -24,13 +26,15 @@ const GetUserForm = ({ selectedUser }) => {
 
   return (
     <div>
-      {data &&
+      {data ? (
         data.getUser.posts.map(({ title, id }) => (
           <div key={id}>
             <p>{title}</p>
           </div>
-        ))}
-      {!data && data.getUser.posts && <p>This user dont have posts</p>}
+        ))
+      ) : (
+        <h1>Please select user to see posts</h1>
+      )}
     </div>
   );
 };

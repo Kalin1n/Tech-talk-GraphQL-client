@@ -29,7 +29,7 @@ const Form = () => {
   }, [data]);
 
   return (
-    <div>
+    <div className="form">
       <input
         value={name}
         onChange={(event) => setName(event.target.value)}
