@@ -42,7 +42,12 @@ const Form = () => {
         placeholder="Password"
         type="password"
       />
-      <button onClick={() => handleSubmiit(name, password)}>Create user</button>
+      <button
+        onClick={() => handleSubmiit(name, password)}
+        className="appButton"
+      >
+        Create user
+      </button>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useLazyQuery } from "@apollo/client";
 
 import { GET_USER } from "../graphql/actions/getUser";
 
-const GetUserForm = ({ selectedUser }) => {
+const GetUserForm = ({ selectedUser, selectPost }) => {
   const [getUser, { loading, error, data }] = useLazyQuery(GET_USER);
 
   useEffect(() => {
@@ -16,19 +16,23 @@ const GetUserForm = ({ selectedUser }) => {
     }
   }, [selectedUser]);
 
-  useEffect(() => {
-    console.log("Current data : ", data);
-  }, [data]);
-
   if (loading) {
     return <h1>Loading...</h1>;
   }
+
+  const handleSelect = (title, id) => {
+    selectPost({ title, id });
+  };
 
   return (
     <div>
       {data ? (
         data.getUser.posts.map(({ title, id }) => (
-          <div key={id}>
+          <div
+            className="postCard"
+            key={id}
+            onClick={() => handleSelect(title, id)}
+          >
             <p>{title}</p>
           </div>
         ))

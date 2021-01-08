@@ -19,6 +19,11 @@ const NewPostForm = () => {
     }
   };
 
+  const handleLogOut = () => {
+    localStorage.removeItem("@gql-demo-token");
+    window.location.reload();
+  };
+
   return (
     <div className="form">
       <input
@@ -31,7 +36,15 @@ const NewPostForm = () => {
         onChange={(event) => setText(event.target.value)}
         placeholder="Text"
       />
-      <button onClick={() => handleCreatePost(title, text)}>Create post</button>
+      <button
+        onClick={() => handleCreatePost(title, text)}
+        className="appButton"
+      >
+        Create post
+      </button>
+      <button onClick={() => handleLogOut()} className="appButton">
+        Log out
+      </button>
     </div>
   );
 };
