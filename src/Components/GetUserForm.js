@@ -4,7 +4,7 @@ import { useLazyQuery } from "@apollo/client";
 import { GET_USER } from "../graphql/actions/getUser";
 import PostPreview from "../Components/PostPreview";
 
-const GetUserForm = ({ selectedUser, selectPost }) => {
+const GetUser = ({ selectedUser, selectPost }) => {
   const [getUser, { loading, error, data }] = useLazyQuery(GET_USER);
 
   useEffect(() => {
@@ -42,4 +42,4 @@ const GetUserForm = ({ selectedUser, selectPost }) => {
   );
 };
 
-export default GetUserForm;
+export default GetUser;

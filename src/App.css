@@ -4,6 +4,10 @@
   justify-content: space-between;
 }
 
+a {
+  text-decoration: none;
+}
+
 .header {
   width: 100%;
   min-height: 40px;
@@ -26,13 +30,13 @@
 
 .usersWrapper {
   display: grid;
-  grid-template-columns: repeat(2, minmax(100px, auto));
+  grid-template-columns: repeat(3, minmax(100px, auto));
 }
 
 .userCard {
   margin: 4px;
   padding: 10px;
-  border: 1px solid lightgrey;
+  border: 2px solid lightgrey;
   border-radius: 8px;
   overflow: hidden;
 }

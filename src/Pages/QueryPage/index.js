@@ -24,7 +24,7 @@ const QueryPage = () => {
 
   return (
     <div className="wrapper">
-      <Header path="/mutations" title="Мутації" />
+      <Header path="/mutations" title="Mutations" />
       <div>
         <h1>Users</h1>
         <GetAllUsers setUser={setSelectedUser} selectedUser={selectedUser} />
