@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 import GetAllUsers from "../../Components/UsersList";
 import GetUser from "../../Components/GetUserForm";
-import { Link } from "react-router-dom";
+import Post from "../../Components/Post";
+import Header from "../../Components/Header";
 
 import { GET_POST } from "../../graphql/actions/getPost";
 
@@ -22,9 +24,7 @@ const QueryPage = () => {
 
   return (
     <div className="wrapper">
-      <Link to="/mutations" style={{ alignSelf: "center" }}>
-        Mutations
-      </Link>
+      <Header path="/mutations" title="Мутації" />
       <div>
         <h1>Users</h1>
         <GetAllUsers setUser={setSelectedUser} selectedUser={selectedUser} />
@@ -35,12 +35,9 @@ const QueryPage = () => {
           <GetUser selectedUser={selectedUser} selectPost={setSelectedPost} />
         </div>
         {loading ? (
-          <p>Laoding...</p>
+          <p>Loading...</p>
         ) : data ? (
-          <div>
-            <p>Title : {data.getPost.title}</p>
-            <p>Post Text : {data.getPost.data}</p>
-          </div>
+          <Post title={data.getPost.title} text={data.getPost.data} />
         ) : (
           <></>
         )}

@@ -4,12 +4,24 @@
   justify-content: space-between;
 }
 
+.header {
+  width: 100%;
+  min-height: 40px;
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding-left: 300px;
-  padding-right: 300px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .usersWrapper {
@@ -31,8 +43,8 @@
 }
 
 .userCard:hover {
-  background-color: black;
-  color: white;
+  background-color: lightgrey;
+  color: black;
 }
 
 .form {
@@ -49,17 +61,21 @@
   padding: 10px;
 }
 
+.postsWrap {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
 .postCard {
   overflow: hidden;
   max-width: 200px;
   margin-top: 0px;
-  border-top: 1px solid lightgrey;
+  border: 1px solid lightgrey;
 }
 
 .postCard p {
   text-align: center;
   align-self: center;
-  margin-bottom: 0px;
 }
 
 .postCard:hover {
@@ -71,4 +87,8 @@
 .posts {
   display: grid;
   grid-template-columns: repeat(2, auto);
+}
+
+.data {
+  text-align: end;
 }

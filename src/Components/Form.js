@@ -1,32 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 
-import { client } from "../App";
+import { CREATE_USER_AND_LOGIN } from "../graphql/actions/createUser";
 
 const Form = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
-  const CREATE_USER = gql`
-    mutation createUser($name: String!, $password: String!) {
-      createUser(name: $name, password: $password) {
-        name
-      }
-    }
-  `;
-
-  const [createUser, { data }] = useMutation(CREATE_USER);
+  const [createUser] = useMutation(CREATE_USER_AND_LOGIN);
 
   const handleSubmiit = async (name, password) => {
     console.log(name, password);
-    createUser({
+    const response = await createUser({
       variables: { name: name, password: password },
     });
-  };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+    console.log("response data  : ", response.data);
+    if (response.data.login) {
+      localStorage.setItem("@gql-demo-token", response.data.login);
+    }
+  };
 
   return (
     <div className="form">

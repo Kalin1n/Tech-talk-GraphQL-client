@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useLazyQuery } from "@apollo/client";
 
 import { GET_USER } from "../graphql/actions/getUser";
+import PostPreview from "../Components/PostPreview";
 
 const GetUserForm = ({ selectedUser, selectPost }) => {
   const [getUser, { loading, error, data }] = useLazyQuery(GET_USER);
@@ -25,17 +26,11 @@ const GetUserForm = ({ selectedUser, selectPost }) => {
   };
 
   return (
-    <div>
+    <div className="postsWrap">
       {data ? (
         data.getUser.posts.length ? (
           data.getUser.posts.map(({ title, id }) => (
-            <div
-              className="postCard"
-              key={id}
-              onClick={() => handleSelect(title, id)}
-            >
-              <p>{title}</p>
-            </div>
+            <PostPreview id={id} title={title} handleSelect={handleSelect} />
           ))
         ) : (
           <p>This user dont have posts</p>

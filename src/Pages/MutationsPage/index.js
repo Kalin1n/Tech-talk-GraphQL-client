@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import RegisterForm from "../../Components/Form";
 import LoginForm from "../../Components/Login";
 import CreatePostFrom from "../../Components/CreatePostForm";
-import { Link } from "react-router-dom";
+import Header from "../../Components/Header";
 
 const MutationsPage = () => {
   const token = localStorage.getItem("@gql-demo-token");
@@ -11,9 +11,7 @@ const MutationsPage = () => {
   console.log("Rendering");
   return (
     <div className="wrapper">
-      <Link to="/" style={{ alignSelf: "center" }}>
-        Querys
-      </Link>
+      <Header path="/" title="Querys" />
       {token ? (
         <div>
           <h2>Create post</h2>
