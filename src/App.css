@@ -98,7 +98,7 @@ a {
   text-align: end;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 875px) {
   .wrapper {
     display: flex;
     flex-direction: column;
