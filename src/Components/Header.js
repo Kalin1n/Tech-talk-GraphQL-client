@@ -9,10 +9,6 @@ const Header = ({ path, title }) => {
     variables: { token: localStorage.getItem("@gql-demo-token") },
   });
 
-  useEffect(() => {
-    console.log("Data : ", data);
-  }, [data]);
-
   return (
     <header className="header">
       <Link to={path}>{title}</Link>

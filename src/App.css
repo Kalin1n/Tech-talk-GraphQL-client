@@ -79,6 +79,7 @@ a {
 
 .postCard p {
   text-align: center;
+  text-overflow: ellipsis;
   align-self: center;
 }
 
@@ -95,4 +96,23 @@ a {
 
 .data {
   text-align: end;
+}
+
+@media screen and (max-width: 375px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .data {
+    text-align: center;
+  }
 }

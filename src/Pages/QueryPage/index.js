@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
 
 import GetAllUsers from "../../Components/UsersList";
 import GetUser from "../../Components/GetUserForm";
@@ -20,7 +19,7 @@ const QueryPage = () => {
         variables: { title: selectedPost.title },
       });
     }
-  }, [selectedPost]);
+  }, [selectedPost, loadPostData]);
 
   return (
     <div className="wrapper">
@@ -34,13 +33,8 @@ const QueryPage = () => {
           <h1>Users posts</h1>
           <GetUser selectedUser={selectedUser} selectPost={setSelectedPost} />
         </div>
-        {loading ? (
-          <p>Loading...</p>
-        ) : data ? (
-          <Post title={data.getPost.title} text={data.getPost.data} />
-        ) : (
-          <></>
-        )}
+        {loading && <p>Loading...</p>}
+        {data && <Post title={data.getPost.title} text={data.getPost.data} />}
       </div>
     </div>
   );

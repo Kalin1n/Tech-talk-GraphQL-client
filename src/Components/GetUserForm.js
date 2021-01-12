@@ -12,25 +12,32 @@ const GetUser = ({ selectedUser, selectPost }) => {
       console.log("NO USER SELECTED");
     } else if (selectedUser) {
       getUser({ variables: { name: selectedUser } });
-    } else {
-      console.log("NO USER SELECTED");
     }
   }, [selectedUser]);
-
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
 
   const handleSelect = (title, id) => {
     selectPost({ title, id });
   };
+
+  if (loading) {
+    return (
+      <div className="postsWrap">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="postsWrap">
       {data ? (
         data.getUser.posts.length ? (
           data.getUser.posts.map(({ title, id }) => (
-            <PostPreview id={id} title={title} handleSelect={handleSelect} />
+            <PostPreview
+              key={id}
+              id={id}
+              title={title}
+              handleSelect={handleSelect}
+            />
           ))
         ) : (
           <p>This user dont have posts</p>

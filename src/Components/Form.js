@@ -9,14 +9,12 @@ const Form = () => {
   const [createUser] = useMutation(CREATE_USER_AND_LOGIN);
 
   const handleSubmiit = async (name, password) => {
-    console.log(name, password);
     const response = await createUser({
       variables: { name: name, password: password },
     });
-
-    console.log("response data  : ", response.data);
     if (response.data.login) {
       localStorage.setItem("@gql-demo-token", response.data.login);
+      window.location.reload();
     }
   };
 

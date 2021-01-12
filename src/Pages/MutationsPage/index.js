@@ -8,7 +8,6 @@ import Header from "../../Components/Header";
 const MutationsPage = () => {
   const token = localStorage.getItem("@gql-demo-token");
 
-  console.log("Rendering");
   return (
     <div className="wrapper">
       <Header path="/" title="Querys" />
